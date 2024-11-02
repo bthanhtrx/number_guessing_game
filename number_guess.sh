@@ -34,9 +34,9 @@ GUESSING_NUMBER=0
 GUESS_TRIES=0
 (( GAMES_PLAYED++ ))
 
+echo -e "\nGuess the secret number between 1 and 1000:\n"
 while [[ $GUESSING_NUMBER -ne $TARGET_NUMBER ]]
 do
-  echo -e "\nGuess the secret number between 1 and 1000:\n"
   read GUESSING_NUMBER
 
   if [[ ! $GUESSING_NUMBER =~ ^[0-9]+$ ]]
@@ -54,13 +54,14 @@ do
   then
     echo -e "\nIt's higher than that, guess again:"
   else
-    echo -e "\nYou guessed it in $GUESS_TRIES tries. The secret number was $TARGET_NUMBER. Nice job!"
- $GAMES_PLAYED, best_game = $BEST_GAME WHERE username='$USERNAME'")    if [[ $GUESS_TRIES -lt $BEST_GAME ]]
+    if [[ $GUESS_TRIES -lt $BEST_GAME ]]
     then
       BEST_GAME=$GUESS_TRIES
     fi
-
-    UPDATE_USER_DATA_RESULT=$($PSQL "UPDATE users SET games_played =
+    
+    UPDATE_USER_DATA_RESULT=$($PSQL "UPDATE users SET games_played = $GAMES_PLAYED, best_game = $BEST_GAME WHERE username='$USERNAME'")
+   
+    echo -e "\nYou guessed it in $GUESS_TRIES tries. The secret number was $TARGET_NUMBER. Nice job!"
   fi
 
 done
