@@ -90,20 +90,53 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.users VALUES (25, 'nero', 1, 3);
 INSERT INTO public.users VALUES (27, 'user_1730522382923', 2, 649);
 INSERT INTO public.users VALUES (26, 'user_1730522382924', 5, 335);
 INSERT INTO public.users VALUES (29, 'user_1730522395426', 2, 713);
 INSERT INTO public.users VALUES (28, 'user_1730522395427', 5, 171);
 INSERT INTO public.users VALUES (31, 'user_1730522410986', 2, 332);
 INSERT INTO public.users VALUES (30, 'user_1730522410987', 5, 588);
+INSERT INTO public.users VALUES (33, 'user_1730533953092', 2, 441);
+INSERT INTO public.users VALUES (32, 'user_1730533953093', 5, 63);
+INSERT INTO public.users VALUES (62, 'user_1730536329990', 2, 141);
+INSERT INTO public.users VALUES (35, 'user_1730534348297', 2, 71);
+INSERT INTO public.users VALUES (61, 'user_1730536329991', 5, 51);
+INSERT INTO public.users VALUES (34, 'user_1730534348298', 5, 38);
+INSERT INTO public.users VALUES (37, 'user_1730534420981', 2, 546);
+INSERT INTO public.users VALUES (64, 'user_1730536414902', 2, 57);
+INSERT INTO public.users VALUES (36, 'user_1730534420982', 5, 112);
+INSERT INTO public.users VALUES (38, 'layton', 1, 5);
+INSERT INTO public.users VALUES (63, 'user_1730536414903', 5, 146);
+INSERT INTO public.users VALUES (40, 'user_1730534475618', 2, 145);
+INSERT INTO public.users VALUES (25, 'nero', 5, 3);
+INSERT INTO public.users VALUES (39, 'user_1730534475619', 5, 161);
+INSERT INTO public.users VALUES (41, 'batman', 1, 5);
+INSERT INTO public.users VALUES (42, 'andy', 0, 1000);
+INSERT INTO public.users VALUES (43, 'nana', 0, 0);
+INSERT INTO public.users VALUES (44, 'user_1730535622296', 0, 0);
+INSERT INTO public.users VALUES (45, 'user_1730535622295', 0, 0);
+INSERT INTO public.users VALUES (46, 'haha', 0, 0);
+INSERT INTO public.users VALUES (47, 'hlea', 0, 0);
+INSERT INTO public.users VALUES (48, 'good', 0, 0);
+INSERT INTO public.users VALUES (49, 'great', 0, 0);
+INSERT INTO public.users VALUES (50, 'mee', 0, 0);
+INSERT INTO public.users VALUES (52, 'user_1730535991206', 2, 721);
+INSERT INTO public.users VALUES (51, 'user_1730535991207', 5, 25);
+INSERT INTO public.users VALUES (53, 'user_1730536114900', 0, 0);
+INSERT INTO public.users VALUES (54, 'user_1730536114899', 0, 0);
+INSERT INTO public.users VALUES (56, 'user_1730536178882', 2, 83);
+INSERT INTO public.users VALUES (55, 'user_1730536178883', 5, 258);
+INSERT INTO public.users VALUES (58, 'user_1730536244705', 2, 136);
+INSERT INTO public.users VALUES (57, 'user_1730536244706', 5, 73);
+INSERT INTO public.users VALUES (60, 'user_1730536268111', 2, 276);
+INSERT INTO public.users VALUES (59, 'user_1730536268112', 5, 6);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 31, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 64, true);
 
 
 --
