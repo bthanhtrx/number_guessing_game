@@ -3,21 +3,30 @@
 PSQL='psql -X --username=freecodecamp --dbname=number_guess --tuples-only -c'
 
 echo "Enter your username:"
-read USERNAME
+read USER_INPUT
 
-USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'");
+USERNAME=$($PSQL "SELECT username FROM users WHERE username='$USER_INPUT'");
+USERNAME=$(echo $USERNAME | sed 's/^ *//')
 
 TARGET_NUMBER=$(( (RANDOM % 1000) + 1 ))
 echo target is $TARGET_NUMBER
-if [[ -z $USER_ID ]]
+
+if [[ -z $USERNAME ]]
 then
+  INSERT_USER_RESULT=$($PSQL "INSERT INTO users(username) VALUES('$USER_INPUT')")
+  if [[ $INSERT_USER_RESULT == 'INSERT 0 1' ]]
+  then
+    USERNAME=$($PSQL "SELECT username FROM users WHERE username='$USER_INPUT'");
+  fi
+  USERNAME=$(echo $USERNAME | sed 's/^ *//')
+
   echo Welcome, $USERNAME! It looks like this is your first time here.
-  INSERT_USER_RESULT=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')")
   BEST_GAME=1000
 else
-  GAMES_PLAYED=$($PSQL "SELECT games_played FROM users WHERE user_id=$USER_ID")
-  BEST_GAME=$($PSQL "SELECT best_game FROM users WHERE user_id = $USER_ID")
+  GAMES_PLAYED=$($PSQL "SELECT games_played FROM users WHERE username='$USER_INPUT'")
+  BEST_GAME=$($PSQL "SELECT best_game FROM users WHERE username='$USER_INPUT'")
 
+  echo games: $GAMES_PLAYED, $BEST_GAME
   echo Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.
 fi
 
@@ -46,12 +55,12 @@ do
     echo -e "\nIt's higher than that, guess again:"
   else
     echo -e "\nYou guessed it in $GUESS_TRIES tries. The secret number was $TARGET_NUMBER. Nice job!"
-    if [[ $GUESS_TRIES -lt $BEST_GAME ]]
+ $GAMES_PLAYED, best_game = $BEST_GAME WHERE username='$USERNAME'")    if [[ $GUESS_TRIES -lt $BEST_GAME ]]
     then
       BEST_GAME=$GUESS_TRIES
     fi
 
-    UPDATE_USER_DATA_RESULT=$($PSQL "UPDATE users SET games_played = $GAMES_PLAYED, best_game = $BEST_GAME WHERE username='$USERNAME'")
+    UPDATE_USER_DATA_RESULT=$($PSQL "UPDATE users SET games_played =
   fi
 
 done
